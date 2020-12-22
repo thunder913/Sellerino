@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="header :: myHeader"></div>
+<div class="wrapper fadeInDown">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/form.css" th:href="@{/css/form.css}"/>
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="inactive underlineHover">
+            <a href="/login">Sign In</a>
+        </h2>
+        <h2 href="/register" class="active">
+            Sign Up
+        </h2>
+        <!-- Login Form -->
+        <h3 th:if="${error != null}" th:text="${error}"/>
+        <form th:object="${user}" method="POST" th:action="@{/do-register}">
+            <input type="text" id="email" th:field="*{email}" class="fadeIn second" name="register" placeholder="Email" th:required="required">
+            <input type="text" id="firstName" th:field="*{firstName}" class="fadeIn second" name="register" placeholder="First Name" th:required="required">
+            <input type="text" id="lastName" th:field="*{lastName}" class="fadeIn second" name="register" placeholder="Last Name" th:required="required">
+            <input type="password" id="password" th:field="*{password}" class="fadeIn third" name="register" placeholder="Password" th:required="required">
+            <input type="password" id="repassword" th:field="*{repeatPassword}" class="fadeIn third" name="register" placeholder="Repeat password" th:required="required" value="">
+            <select th:field="*{role}" th:required="required">
+                <option value="Invalid">Select role:</option>
+                <option value="Admin">Admin</option>
+                <option value="SR">Sales Representative</option>
+            </select>
+            <input type="submit" class="fadeIn fourth" value="Register">
+        </form>
+
+        <div id="formFooter">
+            <p class="fadeIn third"> An administrator must approve your registration!</p>
+        </div>
+
+    </div>
+</div>
+</html>
