@@ -23,6 +23,9 @@
             <input type="text" th:field="*{price}" id="price" class="fadeIn third" name="price" placeholder="Price" required>
             <input type="text" th:field="*{quantity}" id="quantity" class="fadeIn third" name="quantity" placeholder="Quantity" required>
             <br>
+            <label class="fadeIn third" >Images: </label>
+            <select th:field="*{imageUrls}" multiple="multiple" th:required="required" class="fadeIn third mul-selectImg"></select>
+            <br>
             <label class="fadeIn third" >RAM: </label>
             <select th:field="*{ramIds}" multiple th:required="required" class="fadeIn third mul-selectRAM" >
                 <option type="checkbox" th:each="ram: ${ramsList}" th:text="${ram.name}" th:attr="value = ${ram.id}"></option>
@@ -73,6 +76,13 @@ $(document).ready(function(){
                     placeholder: "Storage", //placeholder
                     tags: true,
                     tokenSeparators: ['/',',',';'," "]
+                });
+            })
+            $(document).ready(function(){
+            $(".mul-selectImg").select2({
+                    placeholder: "Images", //placeholder
+                    tags: true,
+                    tokenSeparators: [" "]
                 });
             })
     document.querySelector("#price").value = "";

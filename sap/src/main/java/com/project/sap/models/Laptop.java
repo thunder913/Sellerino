@@ -33,13 +33,13 @@ public class Laptop {
     @NotNull
     private List<Image> images;
 
-    @OneToOne(optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private Processor processor;
 
-    @OneToOne(optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private Screen Screen;
 
-    @OneToOne(optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private VideoCard videoCard;
 
     @ManyToMany(cascade = CascadeType.ALL)

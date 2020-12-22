@@ -7,6 +7,13 @@ import javax.persistence.*;
 @Entity
 @Table(name="Image")
 public class Image {
+    public Image(String url){
+        this.setUrl(url);
+    }
+
+    public Image(){
+        
+    }
     @NotNull
     @Id
     @Column(unique = true, name="Id")

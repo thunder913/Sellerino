@@ -15,6 +15,8 @@ public class LaptopDto extends Laptop {
     private List<Integer> ramIds;
     @Transient
     private List<Integer> storageIds;
+    @Transient
+    private List<String> imageUrls;
 
     public int getProcessorId() {
         return processorId;
@@ -54,5 +56,13 @@ public class LaptopDto extends Laptop {
 
     public void setStorageIds(List<Integer> storageIds) {
         this.storageIds = storageIds;
+    }
+
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 }

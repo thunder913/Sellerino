@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.GenerationType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,12 +48,22 @@ public class AddProductController {
             storageList.add(dbController.findStorageById(id).get());
         }
 
-        Laptop newLaptop = (Laptop) laptop;
+        List<Image> images = new ArrayList<>();
+        for (String imgUrl: laptop.getImageUrls()) {
+            images.add(new Image(imgUrl));
+        }
+
+        Laptop newLaptop = new Laptop();
+        newLaptop.setManufacturer(laptop.getManufacturer());
+        newLaptop.setModel(laptop.getModel());
+        newLaptop.setPrice(laptop.getPrice());
+        newLaptop.setQuantity(laptop.getQuantity());
         newLaptop.setProcessor(processor);
         newLaptop.setScreen(screen);
         newLaptop.setVideoCard(videoCard);
         newLaptop.setRam(rams);
         newLaptop.setStorage(storageList);
+        newLaptop.setImages(images);
 
         dbController.addLaptop(newLaptop);
         return "redirect:/home";
