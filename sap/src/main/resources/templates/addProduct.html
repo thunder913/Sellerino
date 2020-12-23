@@ -30,7 +30,7 @@
             <select th:field="*{ramIds}" multiple th:required="required" class="fadeIn third mul-selectRAM" >
                 <option class="fadeIn third" type="checkbox" th:each="ram: ${ramsList}" th:text="${ram.name}" th:attr="value = ${ram.id}"></option>
             </select>
-            <a ref="/add-ram" class="add fadeIn third">Add RAM</a>
+            <a href="/add-ram" class="add fadeIn third">Add RAM</a>
             <br>
             <label class="fadeIn third" >Processor: </label>
             <select th:field="*{processorId}"  th:required="required" class="fadeIn third" >

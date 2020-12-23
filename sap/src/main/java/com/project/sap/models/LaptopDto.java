@@ -1,21 +1,30 @@
 package com.project.sap.models;
 
-import javax.persistence.*;
+
 import java.util.List;
 
-@Entity
-public class LaptopDto extends Laptop {
-    @Transient
+public class LaptopDto {
+
+    private long id;
+
+    private String manufacturer;
+
+    private float price;
+
+    private int quantity;
+
+    private String model;
+
     private int processorId;
-    @Transient
+
     private int screenId;
-    @Transient
+
     private int videoCardId;
-    @Transient
+
     private List<Integer> ramIds;
-    @Transient
+
     private List<Integer> storageIds;
-    @Transient
+
     private List<String> imageUrls;
 
     public int getProcessorId() {
@@ -64,5 +73,45 @@ public class LaptopDto extends Laptop {
 
     public void setImageUrls(List<String> imageUrls) {
         this.imageUrls = imageUrls;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 }

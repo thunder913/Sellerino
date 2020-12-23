@@ -1,41 +1,34 @@
 package com.project.sap.models;
 
 import com.sun.istack.NotNull;
-import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
-import java.util.List;
-import java.util.Set;
 
-@Entity
-@Table(name="auth_user")
-public class UserDto {
-    @NotNull
-    @Id
-    @Column(unique = true, name="Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDto{
+
     private long id;
 
-    @Column(unique = true, name="email", nullable = false)
     private String email;
 
-    @Column(name="enabled", nullable = false)
     private boolean enabled;
 
-    @Column(name="first_name", nullable = false)
     private String firstName;
 
-    @Column(name="last_name", nullable = false)
     private String lastName;
 
-    @Column(name="password", nullable = false)
     private String password;
 
-    @Column(name="role", nullable = false)
     private String role;
 
+    private String repeatPassword;
+
+    public String getRepeatPassword() {
+        return repeatPassword;
+    }
+
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = repeatPassword;
+    }
 
     public long getId() {
         return id;
@@ -81,6 +74,10 @@ public class UserDto {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getRole() {
         return role;
     }
@@ -88,10 +85,4 @@ public class UserDto {
     public void setRole(String role) {
         this.role = role;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
 }

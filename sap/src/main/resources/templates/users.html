@@ -18,14 +18,14 @@
         <th>Activated</th>
         <th>Actions</th>
     </tr>
-    <tr th:each="user : ${users}">
-        <td th:text="${user.id}"></td>
-        <td th:text="${user.firstName} + ' ' + ${user.lastName}"></td>
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.role}"></td>
-        <td><input th:checked="${user.enabled}" type="checkbox" disabled="disabled"/></td>
-        <td><a th:href="@{/edit/users/{userId}(userId=${user.id})}">Edit</a>
-        <a th:href="@{/delete/users/{userId}(userId=${user.id})}">Delete</a>
+    <tr th:each="userDto : ${users}">
+        <td th:text="${userDto.id}"></td>
+        <td th:text="${userDto.firstName} + ' ' + ${userDto.lastName}"></td>
+        <td th:text="${userDto.email}"></td>
+        <td th:text="${userDto.role}"></td>
+        <td><input th:checked="${userDto.enabled}" type="checkbox" disabled="disabled"/></td>
+        <td><a th:href="@{/edit/users/{userId}(userId=${userDto.id})}">Edit</a>
+        <a th:href="@{/delete/users/{userId}(userId=${userDto.id})}">Delete</a>
         </td>
     </tr>
 

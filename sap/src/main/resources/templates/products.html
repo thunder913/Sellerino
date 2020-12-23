@@ -30,8 +30,8 @@
                 </td>
                 <td th:text="${product.videoCard.name}"></td>
                 <td th:text="${product.screen.name}"></td>
-                <td th:each="storage: ${product.storage}">
-                    <span th:text="${storage.name}"></span>
+                <td >
+                    <span th:each="storage: ${product.storage}" th:text="${storage.name}"></span>
                 </td>
                 <td th:text="${product.price}"></td>
                 <td><a th:href="@{/edit/products/{productId}(productId=${product.id})}">Edit</a>
