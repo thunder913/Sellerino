@@ -10,7 +10,7 @@ public class Processor {
         @NotNull
         @Id
         @Column(unique = true, name="Id")
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
 
         @Column(name="manufacturer", nullable = false, length = 63)

@@ -15,8 +15,8 @@ public class UserDto {
     @NotNull
     @Id
     @Column(unique = true, name="Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Column(unique = true, name="email", nullable = false)
     private String email;
@@ -37,11 +37,11 @@ public class UserDto {
     private String role;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

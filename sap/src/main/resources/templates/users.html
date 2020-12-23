@@ -1,0 +1,38 @@
+<!-- For demo purpose -->
+<div class="container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="pt-5 text-white">
+
+        <div th:replace="header :: myHeader"></div>
+
+        <link rel="stylesheet" type="text/css"
+              href="../static/css/users.css" th:href="@{/css/users.css}"/>
+
+<body>
+
+<table id="customers">
+    <tr>
+        <th>Id</th>
+        <th>Full name</th>
+        <th>E-mail</th>
+        <th>Role</th>
+        <th>Activated</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName} + ' ' + ${user.lastName}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.role}"></td>
+        <td><input th:checked="${user.enabled}" type="checkbox" disabled="disabled"/></td>
+        <td><a th:href="@{/edit/users/{userId}(userId=${user.id})}">Edit</a>
+        <a th:href="@{/delete/users/{userId}(userId=${user.id})}">Delete</a>
+        </td>
+    </tr>
+
+
+</table>
+
+</body>
+    </div>
+</div>
+

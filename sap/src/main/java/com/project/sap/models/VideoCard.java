@@ -10,13 +10,13 @@ public class VideoCard {
     @NotNull
     @Id
     @Column(unique = true, name="Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(unique = true, name="Name", nullable = false, length = 127)
+    @Column(name="Name", nullable = false, length = 127)
     private String name;
 
-    @Column(name="Manufactuer", nullable = false, length = 63)
+    @Column(name="Manufacturer", nullable = false, length = 63)
     private String manufacturer;
 
     @Column(name="Model", nullable = false, length = 63)

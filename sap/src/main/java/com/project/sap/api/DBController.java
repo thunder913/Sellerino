@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.PreRemove;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,4 +94,7 @@ public class DBController{
     public Optional<VideoCard> findVideoCardById(long id){
         return videoCardRepository.findById(id);
     }
+
+    @PreRemove
+    public void deleteLaptopById(long id){ laptopRepository.deleteById(id);}
 }

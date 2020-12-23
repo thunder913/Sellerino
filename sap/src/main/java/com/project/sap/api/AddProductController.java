@@ -11,7 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.GenerationType;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class AddProductController {
@@ -38,17 +40,17 @@ public class AddProductController {
         Screen screen = dbController.findScreenById(laptop.getScreenId()).get();
         VideoCard videoCard = dbController.findVideoCardById(laptop.getVideoCardId()).get();
 
-        List<RAM> rams = new ArrayList<>();
+        Set<RAM> rams = new HashSet<>();
         for (long id:laptop.getRamIds()) {
             rams.add(dbController.findRamById(id).get());
         }
 
-        List<Storage> storageList = new ArrayList<>();
+        Set<Storage> storageList = new HashSet<>();
         for (long id:laptop.getStorageIds()) {
             storageList.add(dbController.findStorageById(id).get());
         }
 
-        List<Image> images = new ArrayList<>();
+        Set<Image> images = new HashSet<>();
         for (String imgUrl: laptop.getImageUrls()) {
             images.add(new Image(imgUrl));
         }

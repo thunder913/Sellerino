@@ -39,6 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/add-ram").authenticated()
                 .antMatchers("/add-video-card").authenticated()
                 .antMatchers("/add-screen").authenticated()
+                .antMatchers("/products").authenticated()
+                .antMatchers("/users").authenticated()
                 .and()
                 .formLogin().permitAll()
                     .loginPage("/login")

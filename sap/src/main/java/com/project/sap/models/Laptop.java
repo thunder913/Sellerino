@@ -6,7 +6,9 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Currency;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="Laptop")
@@ -14,8 +16,8 @@ public class Laptop {
     @NotNull
     @Id
     @Column(unique = true, name="Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Column(name="Manufacturer", nullable = false)
     private String manufacturer;
@@ -30,8 +32,10 @@ public class Laptop {
     private String model;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @NotNull
-    private List<Image> images;
+    @JoinTable(name="laptop_images",
+                    joinColumns = { @JoinColumn(name="laptop_id")},
+                    inverseJoinColumns={@JoinColumn(name="images_id")})
+    private Set<Image> images = new HashSet<Image>();
 
     @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private Processor processor;
@@ -43,18 +47,22 @@ public class Laptop {
     private VideoCard videoCard;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @NotNull
-    private List<RAM> ram;
+    @JoinTable(name="laptop_ram",
+            joinColumns = { @JoinColumn(name="laptop_id")},
+            inverseJoinColumns={@JoinColumn(name="ram_id")})
+    private Set<RAM> ram = new HashSet<RAM>();
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @NotNull
-    private List<Storage> storage;
+    @JoinTable(name="laptop_storage",
+            joinColumns = { @JoinColumn(name="laptop_id")},
+            inverseJoinColumns={@JoinColumn(name="storage_id")})
+    private Set<Storage> storage = new HashSet<Storage>();
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -90,13 +98,6 @@ public class Laptop {
         this.model = model;
     }
 
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
-    }
 
     public Processor getProcessor() {
         return processor;
@@ -122,19 +123,27 @@ public class Laptop {
         this.videoCard = videoCard;
     }
 
-    public List<RAM> getRam() {
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<Image> images) {
+        this.images = images;
+    }
+
+    public Set<RAM> getRam() {
         return ram;
     }
 
-    public void setRam(List<RAM> ram) {
+    public void setRam(Set<RAM> ram) {
         this.ram = ram;
     }
 
-    public List<Storage> getStorage() {
+    public Set<Storage> getStorage() {
         return storage;
     }
 
-    public void setStorage(List<Storage> storage) {
+    public void setStorage(Set<Storage> storage) {
         this.storage = storage;
     }
 }

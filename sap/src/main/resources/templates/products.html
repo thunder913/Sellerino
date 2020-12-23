@@ -1,0 +1,48 @@
+<div class="container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="pt-5 text-white">
+
+        <div th:replace="header :: myHeader"></div>
+
+        <link rel="stylesheet" type="text/css"
+              href="../static/css/products.css" th:href="@{/css/products.css}"/>
+
+        <body>
+
+        <table id="customers">
+            <tr>
+                <th>Image</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Processor</th>
+                <th>RAM</th>
+                <th>Graphics Card</th>
+                <th>Screen</th>
+                <th>Storage</th>
+                <th>Price</th>
+            </tr>
+            <tr th:each="product : ${products}">
+                <td><img th:src="@{${product.images[0].url}}"></td>
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.manufacturer} + ' ' + ${product.model}"></td>
+                <td th:text="${product.processor.name}"></td>
+                <td>
+                    <span th:each="ram: ${product.ram}" th:text="${ram.name}"></span>
+                </td>
+                <td th:text="${product.videoCard.name}"></td>
+                <td th:text="${product.screen.name}"></td>
+                <td th:each="storage: ${product.storage}">
+                    <span th:text="${storage.name}"></span>
+                </td>
+                <td th:text="${product.price}"></td>
+                <td><a th:href="@{/edit/products/{productId}(productId=${product.id})}">Edit</a>
+                    <a th:href="@{/delete/products/{productId}(productId=${product.id})}">Delete</a>
+                </td>
+            </tr>
+
+
+        </table>
+
+        </body>
+    </div>
+</div>
+

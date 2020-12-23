@@ -17,10 +17,10 @@ public class Image {
     @NotNull
     @Id
     @Column(unique = true, name="Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="url", nullable = false)
+    @Column(name="url", nullable = false, length = 1027)
     private String url;
 
     public int getId() {

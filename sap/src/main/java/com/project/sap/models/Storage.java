@@ -10,7 +10,7 @@ public class Storage {
     @NotNull
     @Id
     @Column(unique = true, name="Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name="name", nullable = false)
