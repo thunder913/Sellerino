@@ -21,7 +21,7 @@
                 <th>Price</th>
             </tr>
             <tr th:each="product : ${products}">
-                <td><img th:src="@{${product.images[0].url}}"></td>
+                <td><img th:if="${!product.images.empty}" th:src="@{${product.images[0].url}}"></td>
                 <td th:text="${product.id}"></td>
                 <td th:text="${product.manufacturer} + ' ' + ${product.model}"></td>
                 <td th:text="${product.processor.name}"></td>

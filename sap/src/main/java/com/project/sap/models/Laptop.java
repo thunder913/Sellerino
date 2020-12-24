@@ -1,7 +1,6 @@
 package com.project.sap.models;
 
 import com.sun.istack.NotNull;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -31,7 +30,7 @@ public class Laptop {
     @Column(name="Model", nullable = false)
     private String model;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name="laptop_images",
                     joinColumns = { @JoinColumn(name="laptop_id")},
                     inverseJoinColumns={@JoinColumn(name="images_id")})
@@ -46,13 +45,13 @@ public class Laptop {
     @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private VideoCard videoCard;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="laptop_ram",
             joinColumns = { @JoinColumn(name="laptop_id")},
             inverseJoinColumns={@JoinColumn(name="ram_id")})
     private Set<RAM> ram = new HashSet<RAM>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="laptop_storage",
             joinColumns = { @JoinColumn(name="laptop_id")},
             inverseJoinColumns={@JoinColumn(name="storage_id")})

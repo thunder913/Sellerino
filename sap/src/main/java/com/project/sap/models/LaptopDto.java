@@ -15,55 +15,55 @@ public class LaptopDto {
 
     private String model;
 
-    private int processorId;
+    private long processorId;
 
-    private int screenId;
+    private long screenId;
 
-    private int videoCardId;
+    private long videoCardId;
 
-    private List<Integer> ramIds;
+    private List<Long> ramIds;
 
-    private List<Integer> storageIds;
+    private List<Long> storageIds;
 
     private List<String> imageUrls;
 
-    public int getProcessorId() {
+    public long getProcessorId() {
         return processorId;
     }
 
-    public void setProcessorId(int processorId) {
+    public void setProcessorId(long processorId) {
         this.processorId = processorId;
     }
 
-    public int getScreenId() {
+    public long getScreenId() {
         return screenId;
     }
 
-    public void setScreenId(int screenId) {
+    public void setScreenId(long screenId) {
         this.screenId = screenId;
     }
 
-    public int getVideoCardId() {
+    public long getVideoCardId() {
         return videoCardId;
     }
 
-    public void setVideoCardId(int videoCardId) {
+    public void setVideoCardId(long videoCardId) {
         this.videoCardId = videoCardId;
     }
 
-    public List<Integer> getRamIds() {
+    public List<Long> getRamIds() {
         return ramIds;
     }
 
-    public void setRamIds(List<Integer> ramIds) {
+    public void setRamIds(List<Long> ramIds) {
         this.ramIds = ramIds;
     }
 
-    public List<Integer> getStorageIds() {
+    public List<Long> getStorageIds() {
         return storageIds;
     }
 
-    public void setStorageIds(List<Integer> storageIds) {
+    public void setStorageIds(List<Long> storageIds) {
         this.storageIds = storageIds;
     }
 

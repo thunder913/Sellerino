@@ -24,16 +24,16 @@
             <input type="text" th:field="*{quantity}" id="quantity" class="fadeIn third" name="quantity" placeholder="Quantity" required>
             <br>
             <label class="fadeIn third" >Images: </label>
-            <select th:field="*{imageUrls}" multiple="multiple" th:required="required" class="fadeIn fourth mul-selectImg"></select>
+            <select id="images" th:field="*{imageUrls}" multiple="multiple" th:required="required" class="fadeIn fourth mul-selectImg"></select>
             <br>
             <label class="fadeIn third" >RAM: </label>
-            <select th:field="*{ramIds}" multiple th:required="required" class="fadeIn third mul-selectRAM" >
+            <select id="rams" th:field="*{ramIds}" multiple th:required="required" class="fadeIn third mul-selectRAM" >
                 <option class="fadeIn third" type="checkbox" th:each="ram: ${ramsList}" th:text="${ram.name}" th:attr="value = ${ram.id}"></option>
             </select>
             <a href="/add-ram" class="add fadeIn third">Add RAM</a>
             <br>
             <label class="fadeIn third" >Processor: </label>
-            <select th:field="*{processorId}"  th:required="required" class="fadeIn third" >
+            <select id="processors" th:field="*{processorId}"  th:required="required" class="fadeIn third" >
                 <option th:each="processor: ${processorList}" th:text="${processor.name}" th:attr="value = ${processor.id}"></option>
             </select>
             <a href="/add-processor" class="add fadeIn third">Add Processor</a>
@@ -85,6 +85,8 @@ $(document).ready(function(){
                     tokenSeparators: [" "]
                 });
             })
+
+
     document.querySelector("#price").value = "";
     document.querySelector("#quantity").value = "";
 
