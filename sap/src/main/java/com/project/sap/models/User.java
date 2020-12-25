@@ -36,6 +36,17 @@ public class User {
     @Column(name="role", nullable = false)
     private String role;
 
+    //Does not change the admin, because SQL makes another table
+    @OneToMany(fetch = FetchType.LAZY)
+    private Set<Sale> sales;
+
+    public Set<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(Set<Sale> sales) {
+        this.sales = sales;
+    }
 
     public long getId() {
         return id;
