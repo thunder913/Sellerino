@@ -18,19 +18,20 @@
                 <th>Price per unit</th>
                 <th>Total price</th>
                 <th>Buyer</th>
+                <th>Actions</th>
             </tr>
             <tr th:each="sale : ${sales}">
                 <td th:text="${sale.id}"></td>
-                <td th:text="${#dates.format(sale.date, 'dd-MM-yyyy HH:mm')}"></td>
+                <td th:text="${#dates.format(sale.date, 'dd-MM-yyyy HH:mm')} + ' GMT'"></td>
                 <td th:text="${sale.laptop.manufacturer} + ' ' + ${sale.laptop.model}"></td>
                 <td th:text="${sale.quantity}"></td>
                 <td th:text="${sale.laptop.price}"></td>
                 <td th:text="${sale.totalPrice}"></td>
                 <td th:text="${sale.buyer.firstName} + ' ' + ${sale.buyer.lastName}"></td>
                 <td>
-                    <a th:href="@{/edit/clients/{saleId}(saleId=${sale.id})}">Edit</a>
-                    <a th:href="@{/delete/clients/{saleId}(saleId=${sale.id})}">Delete</a>
-                    <a th:href="@{/sales/clients/{saleId}(saleId=${sale.id})}">Sales</a>
+                    <a th:href="@{/edit/sales/{saleId}(saleId=${sale.id})}">Edit</a>
+                    <a th:href="@{/delete/sales/{saleId}(saleId=${sale.id})}">Delete</a>
+                    <a th:href="@{/sales/sales/{saleId}(saleId=${sale.id})}">Sales</a>
                 </td>
             </tr>
 

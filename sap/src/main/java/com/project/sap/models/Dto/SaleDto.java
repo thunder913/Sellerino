@@ -14,7 +14,7 @@ public class SaleDto {
 
     private Date date;
 
-    private Laptop laptop;
+    private long laptopId;
 
     private int quantity;
 
@@ -22,7 +22,7 @@ public class SaleDto {
 
     private BigDecimal priceForOne;
 
-    private Client buyer;
+    private long buyerId;
 
     public long getId() {
         return id;
@@ -38,14 +38,6 @@ public class SaleDto {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public Laptop getLaptop() {
-        return laptop;
-    }
-
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
     }
 
     public int getQuantity() {
@@ -72,11 +64,19 @@ public class SaleDto {
         this.priceForOne = priceForOne;
     }
 
-    public Client getBuyer() {
-        return buyer;
+    public long getLaptopId() {
+        return laptopId;
     }
 
-    public void setBuyer(Client buyer) {
-        this.buyer = buyer;
+    public void setLaptopId(long laptopId) {
+        this.laptopId = laptopId;
+    }
+
+    public long getBuyerId() {
+        return buyerId;
+    }
+
+    public void setBuyerId(long buyerId) {
+        this.buyerId = buyerId;
     }
 }

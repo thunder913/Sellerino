@@ -4,11 +4,12 @@ package com.project.sap.services;
 import com.project.sap.models.Client;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClientService {
     List<Client> get();
 
-    Client getById(long id);
+    Optional<Client> getById(long id);
 
     void deleteById(long id);
 

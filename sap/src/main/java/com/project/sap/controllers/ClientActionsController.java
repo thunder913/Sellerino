@@ -1,6 +1,7 @@
 package com.project.sap.controllers;
 
 import com.project.sap.models.Client;
+import com.project.sap.models.User;
 import com.project.sap.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ public class ClientActionsController {
     }
 
 
+    //TODO make sure there is no error when deleting a client with sales (show error or just don't allow it and show messge)
     @GetMapping("/delete/clients/{id}")
     public String deleteUser(@PathVariable(value = "id") String id){
         long currentId = Long.parseLong(id);
@@ -51,5 +53,4 @@ public class ClientActionsController {
         errorMessage = null;
         return "redirect:/home";
     }
-
 }

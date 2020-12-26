@@ -17,13 +17,13 @@
         <h2 class="active"> Add Sale </h2>
         <form th:object="${sale}" th:action="@{/add-sale}" method="post">
             <label class="fadeIn third" >Laptop: </label>
-            <select id="laptops" th:field="${laptops}" th:required="required" class="fadeIn fourth mul-selectLaptops">
-                <option id="default" value="default">Select Laptop</option>
+            <select id="laptops" th:field="*{laptopId}" th:required="required" class="fadeIn fourth mul-selectLaptops">
+                <option id="default" value="0">Select Laptop</option>
                 <option class="fadeIn third" type="checkbox" th:each="laptop: ${laptops}" th:text="${laptop.manufacturer} + ' ' + ${laptop.model}" th:attr="value = ${laptop.id}, data-price = ${laptop.price}"></option>
             </select>
             <br>
             <label class="fadeIn third" >Buyer: </label>
-            <select id="buyers" th:field="${clients}" th:required="required" class="fadeIn third mul-selectClients" >
+            <select id="buyers" th:field="*{buyerId}" th:required="required" class="fadeIn third mul-selectClients" >
                 <option class="fadeIn third" type="checkbox" th:each="client: ${clients}" th:text="${client.email}" th:attr="value = ${client.id}"></option>
             </select>
             <a href="/add-client" class="add fadeIn third">Add Client</a>
