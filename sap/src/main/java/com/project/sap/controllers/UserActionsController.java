@@ -22,7 +22,7 @@ public class UserActionsController {
         userService.deleteById(currentId);
         return "redirect:/users";
     }
-
+    //TODO make an actual error to show when trying to put a user email that already exists
     //TODO make it actually useful, because right now there are no sales or laptops per SR
     @GetMapping("/edit/users/{id}")
     public ModelAndView editUser(@PathVariable(value = "id") String id){
@@ -31,5 +31,16 @@ public class UserActionsController {
         User user = userService.getUserById(currentId);
         mav.addObject("user", user);
         return mav;
+    }
+
+    @PostMapping("/edit/users/{id}")
+    public String submitEdit(@PathVariable(value = "id") String id, User user){
+        ModelAndView mav = new ModelAndView("");
+        long currentId = Long.parseLong(id);
+        User oldUser = userService.getUserById(currentId);
+        user.setSales(oldUser.getSales());
+        user.setPassword(oldUser.getPassword());
+        userService.save(user);
+        return "redirect:/users";
     }
 }

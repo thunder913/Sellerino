@@ -12,4 +12,6 @@ public interface LaptopRepository extends JpaRepository<Laptop, Long> {
 
     @Override
     List<Laptop> findAll();
+
+
 }

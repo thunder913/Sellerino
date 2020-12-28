@@ -21,7 +21,6 @@
             <input type="text" th:value="*{manufacturer}" id="manufacturer" class="fadeIn second" name="manufacturer" placeholder="Manufacturer" required>
             <input type="text" th:value="*{model}" id="model" class="fadeIn second" name="model" placeholder="Model" required>
             <input type="text" th:value="*{price}" id="price" class="fadeIn third" name="price" placeholder="Price" required>
-            <input type="text" th:value="*{quantity}" id="quantity" class="fadeIn third" name="quantity" placeholder="Quantity" required>
             <br>
             <label class="fadeIn third" >Images: </label>
             <select id="images" th:field="*{imageUrls}" multiple th:required="required" class="fadeIn third mul-selectImage" >
@@ -58,7 +57,7 @@
             </select>
             <a href="/add-video-card" class="add fadeIn third">Add Video Card</a>
             <br>
-            <input type="submit" class="fadeIn fourth" value="Add">
+            <input type="submit" class="fadeIn fourth" value="Edit">
 
         </form>
         <div id="formFooter">

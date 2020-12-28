@@ -64,7 +64,6 @@ public class LaptopServiceImpl implements LaptopService{
         laptop.setManufacturer(laptopDto.getManufacturer());
         laptop.setModel(laptopDto.getModel());
         laptop.setPrice(laptopDto.getPrice());
-        laptop.setQuantity(laptopDto.getQuantity());
         laptop.setProcessor(processor);
         laptop.setScreen(screen);
         laptop.setVideoCard(videoCard);
@@ -81,7 +80,6 @@ public class LaptopServiceImpl implements LaptopService{
         laptopDto.setManufacturer(laptop.getManufacturer());
         laptopDto.setModel(laptop.getModel());
         laptopDto.setPrice(laptop.getPrice());
-        laptopDto.setQuantity(laptop.getQuantity());
         laptopDto.setProcessorId(laptop.getProcessor().getId());
         laptopDto.setScreenId(laptop.getScreen().getId());
         laptopDto.setVideoCardId(laptop.getVideoCard().getId());

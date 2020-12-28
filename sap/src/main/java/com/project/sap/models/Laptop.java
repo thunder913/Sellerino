@@ -24,9 +24,6 @@ public class Laptop {
     @Column(name="Price", nullable = false)
     private float price;
 
-    @Column(name="Quantity", nullable=false)
-    private int quantity;
-
     @Column(name="Model", nullable = false)
     private String model;
 
@@ -79,14 +76,6 @@ public class Laptop {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public String getModel() {

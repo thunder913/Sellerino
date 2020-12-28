@@ -33,6 +33,25 @@ public class ClientActionsController {
         return "redirect:/clients";
     }
 
+    @GetMapping("/edit/clients/{id}")
+    public ModelAndView editClient(@PathVariable(value = "id") String id){
+        long currentId = Long.parseLong(id);
+        Client client = clientService.getById(currentId).get();
+        ModelAndView mav = new ModelAndView("edit-client");
+        mav.addObject(client);
+        return mav;
+    }
+
+    @PostMapping("/edit/client/{id}")
+    public String submitEditClient(@PathVariable(value = "id") String id, Client client){
+        long currentId = Long.parseLong(id);
+        Client oldCLient = clientService.getById(currentId).get();
+        client.setSales(oldCLient.getSales());
+        clientService.addClient(client);
+        return "redirect:/clients";
+    }
+
+
     @GetMapping("/add-client")
     public ModelAndView getAddClient(){
         ModelAndView mav = new ModelAndView("add-client");

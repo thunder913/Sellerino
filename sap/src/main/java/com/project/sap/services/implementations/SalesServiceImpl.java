@@ -9,6 +9,7 @@ import com.project.sap.services.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -37,6 +38,19 @@ public class SalesServiceImpl implements SalesService {
     }
 
     @Override
+    public SaleDto convertSaleToDto(Sale sale) {
+        SaleDto saleDto = new SaleDto();
+        saleDto.setDate(sale.getDate());
+        saleDto.setBuyerId(sale.getBuyer().getId());
+        saleDto.setLaptopId(sale.getLaptop().getId());
+        saleDto.setId(sale.getId());
+        saleDto.setPriceForOne(BigDecimal.valueOf(sale.getLaptop().getPrice()));
+        saleDto.setQuantity(sale.getQuantity());
+        saleDto.setTotalPrice(sale.getTotalPrice());
+        return saleDto;
+    }
+
+    @Override
     public void save(Sale sale) {
         saleRepository.save(sale);
     }
@@ -44,5 +58,10 @@ public class SalesServiceImpl implements SalesService {
     @Override
     public void deleteById(long id) {
         saleRepository.deleteById(id);
+    }
+
+    @Override
+    public Sale getById(long id) {
+        return saleRepository.getOne(id);
     }
 }

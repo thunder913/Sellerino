@@ -1,0 +1,89 @@
+<div class="container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="pt-5 text-white">
+
+        <div th:replace="header :: myHeader"></div>
+
+        <link rel="stylesheet" type="text/css"
+              href="../static/css/table.css" th:href="@{/css/table.css}"/>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+            th:src="@{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+                th:src="@{https://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+                th:src="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js}"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+                th:href="@{https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css}"/>
+
+        <link rel="stylesheet" href="./static/css/select2.min.css"
+              th:href="@{/css/select2.min.css}">
+        <body>
+
+        <form method="get" th:action="@{/sales-admin}">
+            <p>Search by date: </p>
+            <input readonly class="datepicker" type="text" name="datefilter" value="" placeholder="Period" />
+
+            <select id="client" name="client" th:required="required" class="fadeIn third" >
+                <option value="0">Select client</option>
+                <option th:each="client: ${clients}" th:text="${client.firstName} + ' ' + ${client.lastName} + ', ' + ${client.city}" th:attr="value = ${client.id}"></option>
+            </select>
+
+            <select id="seller" name="seller" th:required="required" class="fadeIn third" >
+                <option value="0">Select seller</option>
+                <option th:each="seller: ${sellers}" th:text="${seller.firstName} + ' ' + ${seller.lastName}" th:attr="value = ${seller.id}"></option>
+            </select>
+            <button type="submit" value="Submit">Submit</button>
+        </form>
+
+        <table id="table">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Laptop</th>
+                <th>Quantity</th>
+                <th>Price per unit</th>
+                <th>Total price</th>
+                <th>Buyer</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="sale : ${sales}">
+                <td th:text="${sale.id}"></td>
+                <td th:text="${#dates.format(sale.date, 'dd-MM-yyyy HH:mm')} + ' GMT'"></td>
+                <td th:text="${sale.laptop.manufacturer} + ' ' + ${sale.laptop.model}"></td>
+                <td th:text="${sale.quantity}"></td>
+                <td th:text="${sale.laptop.price}"></td>
+                <td th:text="${sale.totalPrice}"></td>
+                <td th:text="${sale.buyer.firstName} + ' ' + ${sale.buyer.lastName}"></td>
+                <td>
+                    <a th:href="@{/edit/sales/{saleId}(saleId=${sale.id})}">Edit</a>
+                    <a th:href="@{/delete/sales/{saleId}(saleId=${sale.id})}">Delete</a>
+                </td>
+            </tr>
+        </table>
+        </body>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+
+  $('input[name="datefilter"]').daterangepicker({
+      autoUpdateInput: false,
+      locale: {
+          cancelLabel: 'Clear'
+      }
+  });
+
+  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+  });
+
+  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+  });
+
+});
+</script>

@@ -10,7 +10,11 @@ public interface SalesService {
 
     Sale convertDtoToSale(SaleDto saleDto);
 
+    SaleDto convertSaleToDto(Sale sale);
+
     void save(Sale sale);
 
     void deleteById(long id);
+
+    Sale getById(long id);
 }
