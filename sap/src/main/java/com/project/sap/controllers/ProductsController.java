@@ -32,6 +32,7 @@ public class ProductsController {
 
     }
 
+    //TODO make deleting products not possible when there is a sale on the certain product or possible but give the user a warning beforehand
     @GetMapping("/delete/products/{id}")
     public String deleteUser(@PathVariable(value = "id") String id){
         long currentId = Long.parseLong(id);

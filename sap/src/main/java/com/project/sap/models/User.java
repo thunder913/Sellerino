@@ -38,6 +38,9 @@ public class User {
 
     //Does not change the admin, because SQL makes another table
     @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="auth_user_sales",
+                    joinColumns = { @JoinColumn(name="user_id")},
+                    inverseJoinColumns={@JoinColumn(name="sales_id")})
     private Set<Sale> sales;
 
     public Set<Sale> getSales() {

@@ -36,6 +36,9 @@ public class Client {
     private String phone;
 
     @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="client_sales",
+            joinColumns = { @JoinColumn(name="client_id")},
+            inverseJoinColumns={@JoinColumn(name="sales_id")})
     private Set<Sale> sales;
 
     public long getId() {

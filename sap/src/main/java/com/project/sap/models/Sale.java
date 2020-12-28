@@ -28,8 +28,17 @@ public class Sale {
     @Column(name="totalPrice", nullable = false)
     private BigDecimal totalPrice;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name="client_sales",
+            joinColumns = { @JoinColumn(name="sales_id")},
+            inverseJoinColumns={@JoinColumn(name="client_id")})
     private Client buyer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name="auth_user_sales",
+            joinColumns = { @JoinColumn(name="sales_id")},
+            inverseJoinColumns={@JoinColumn(name="user_id")})
+    private User seller;
 
     public long getId() {
         return id;
@@ -77,5 +86,13 @@ public class Sale {
 
     public void setBuyer(Client buyer) {
         this.buyer = buyer;
+    }
+
+    public User getSeller() {
+        return seller;
+    }
+
+    public void setSeller(User seller) {
+        this.seller = seller;
     }
 }
