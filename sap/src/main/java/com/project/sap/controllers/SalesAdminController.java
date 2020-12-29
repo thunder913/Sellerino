@@ -33,7 +33,6 @@ public class SalesAdminController {
     @Autowired
     SalesService salesService;
 
-    //TODO analyze the sales -> total price of all, total count of sale, average per sale, best seller, best client etc...
     @GetMapping("/sales-admin")
     public ModelAndView getAdminSale(@RequestParam(required = false) String datefilter, @RequestParam(required = false) String client, @RequestParam(required = false) String seller) throws ParseException {
         List<Sale> sales = salesService.getAll();

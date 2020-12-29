@@ -15,8 +15,6 @@
     <div id="formContent">
         <h2 class="active"> Add Product </h2>
 
-        <!--TODO REMOVE <BR> AND FIX THE CSS-ING OF THE CODE -->
-
         <form th:object="${laptop}" th:action="@{/add-product}" method="post">
             <input type="text" th:field="*{manufacturer}" id="manufacturer" class="fadeIn second" name="manufacturer" placeholder="Manufacturer" required>
             <input type="text" th:field="*{model}" id="model" class="fadeIn second" name="model" placeholder="Model" required>

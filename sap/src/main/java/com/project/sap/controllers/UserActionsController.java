@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-//TODO Make possible for users to have laptops/sales and delete user from both places
 @Controller
 public class UserActionsController {
 
@@ -23,7 +22,6 @@ public class UserActionsController {
         return "redirect:/users";
     }
     //TODO make an actual error to show when trying to put a user email that already exists
-    //TODO make it actually useful, because right now there are no sales or laptops per SR
     @GetMapping("/edit/users/{id}")
     public ModelAndView editUser(@PathVariable(value = "id") String id){
         ModelAndView mav = new ModelAndView("edit-user");

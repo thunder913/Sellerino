@@ -46,8 +46,6 @@ public class ProductsController {
         return "redirect:/products";
     }
 
-    //TODO make edit product page work fine
-    //TODO Fix image ids
     @GetMapping("edit/products/{id}")
     public ModelAndView editProduct(@PathVariable(value ="id") String id){
         long currentId = Long.parseLong(id);

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-//TODO Make buttons look nice and the checkbox too
 @Controller
 public class UsersController {
     @Autowired

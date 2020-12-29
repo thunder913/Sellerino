@@ -17,7 +17,6 @@ public class AddProductController {
     @Autowired
     AddComponentsService addComponentsService;
 
-    //TODO make service that combines the functions of all those + the laptopService map
     @GetMapping("add-product")
     public ModelAndView addProduct(){
         ModelAndView mav = new ModelAndView("addproduct");
