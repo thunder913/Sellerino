@@ -2,6 +2,7 @@ package com.project.sap.controllers;
 
 import com.project.sap.models.Dto.dateDto;
 import com.project.sap.models.Sale;
+import com.project.sap.models.Statistic;
 import com.project.sap.services.ClientService;
 import com.project.sap.services.SalesService;
 import com.project.sap.services.UserService;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,6 +65,29 @@ public class SalesAdminController {
             sales = sales.stream().filter(x->x.getDate().after(date1) && x.getDate().before(new Date(date2.getTime() + 86400000))).collect(Collectors.toList());
         }
 
+        if (sales.size()>0) {
+            Statistic stats = new Statistic();
+            BigDecimal totalCost = new BigDecimal(0);
+            Sale biggestSale = new Sale();
+            Sale worstSale = new Sale();
+            worstSale.setTotalPrice(new BigDecimal(Double.MAX_VALUE));
+            for (Sale sale : sales) {
+                totalCost = totalCost.add(sale.getTotalPrice());
+                if (biggestSale.getTotalPrice().compareTo(sale.getTotalPrice()) < 0) {
+                    biggestSale = sale;
+                }
+                if (worstSale.getTotalPrice().compareTo(sale.getTotalPrice()) > 0) {
+                    worstSale = sale;
+                }
+            }
+            stats.setTotalCost(totalCost);
+            stats.setSalesCount(sales.size());
+            BigDecimal divided = stats.getTotalCost().divide(new BigDecimal(stats.getSalesCount()), RoundingMode.HALF_UP);
+            stats.setAveragePrice(divided);
+            stats.setWorstSale(worstSale);
+            stats.setBiggestSale(biggestSale);
+            mav.addObject("stats", stats);
+        }
         mav.addObject("sales", sales);
         mav.addObject("sellers", (userService.get().stream().filter(x->x.getRole().equals("SR")).collect(Collectors.toList())));
         mav.addObject("clients", clientService.get());

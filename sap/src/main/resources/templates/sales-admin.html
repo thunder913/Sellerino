@@ -6,6 +6,9 @@
         <link rel="stylesheet" type="text/css"
               href="../static/css/table.css" th:href="@{/css/table.css}"/>
 
+        <link rel="stylesheet" type="text/css"
+              href="../static/css/sales-admin.css" th:href="@{/css/sales-admin.css}"/>
+
         <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
             th:src="@{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
 
@@ -37,6 +40,23 @@
             </select>
             <button type="submit" value="Submit">Submit</button>
         </form>
+
+        <table th:if="${stats != null}" class="table">
+            <tr>
+                <th>Total sales</th>
+                <th>Average cost per sale</th>
+                <th>Total price of all sales</th>
+                <th>Biggest sale</th>
+                <th>Smallest sale</th>
+            </tr>
+            <tr th:object="${stats}">
+                <td th:text="${stats.salesCount}"></td>
+                <td th:text="${stats.averagePrice}"></td>
+                <td th:text="${stats.totalCost}"></td>
+                <td th:text="${stats.biggestSale.totalPrice} + ' BGN made by ' + ${stats.biggestSale.seller.email}"></td>
+                <td th:text="${stats.worstSale.totalPrice} + ' BGN made by ' + ${stats.worstSale.seller.email}"></td>
+            </tr>
+        </table>
 
         <table id="table">
             <tr>
@@ -84,6 +104,5 @@ $(function() {
   $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
       $(this).val('');
   });
-
 });
 </script>

@@ -95,4 +95,8 @@ public class Sale {
     public void setSeller(User seller) {
         this.seller = seller;
     }
+
+    public Sale() {
+        this.setTotalPrice(new BigDecimal(0));
+    }
 }

@@ -1,7 +1,7 @@
 USE [master]
 GO
 
-/****** Object:  Database [SapProjectDB]    Script Date: 12/23/2020 3:26:04 PM ******/
+/****** Object:  Database [SapProjectDB]    Script Date: 12/29/2020 12:33:47 PM ******/
 CREATE DATABASE [SapProjectDB]
  CONTAINMENT = NONE
  ON  PRIMARY 

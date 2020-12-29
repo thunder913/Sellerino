@@ -94,7 +94,7 @@ public class SalesSRController {
         User seller = this.getUser();
         sale.setSeller(seller);
         salesService.save(sale);
-        return "redirect:/sales-sr";
+        return "redirect:/home";
     }
 
     private User getUser(){
