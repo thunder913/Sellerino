@@ -1,7 +1,7 @@
 package com.project.sap.models.Dto;
 
 
-public class dateDto {
+public class DateDto {
     private String date;
 
     public String getDate() {

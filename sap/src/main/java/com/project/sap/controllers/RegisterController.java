@@ -2,7 +2,8 @@ package com.project.sap.controllers;
 
 import com.project.sap.models.*;
 import com.project.sap.models.Dto.UserDto;
-import com.project.sap.services.UserService;
+import com.project.sap.services.interfaces.UserService;
+import com.project.sap.utils.UserMapper;
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -18,8 +19,12 @@ public class RegisterController {
 
     private String errorMessage = null;
 
-    @Autowired
     private UserService userService;
+
+    @Autowired
+    public RegisterController(UserService userService) {
+        this.userService = userService;
+    }
 
     //TODO make the model take the errorMessage variable, without the need of a private String errorMessage
     //and give the GET /register the values for email and names, so not to write em again
@@ -48,7 +53,7 @@ public class RegisterController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         userDto.setRepeatPassword(passwordEncoder.encode(userDto.getRepeatPassword()));
-        User userToAdd = userService.mapUserFromDto(userDto);
+        User userToAdd = UserMapper.INSTANCE.userDtoToUser(userDto);
         try {
             userService.save(userToAdd);
         }catch (DataIntegrityViolationException ex){

@@ -12,6 +12,11 @@ import java.util.Set;
 @Entity
 @Table(name="Laptop")
 public class Laptop {
+
+    public Laptop(){
+
+    }
+
     @NotNull
     @Id
     @Column(unique = true, name="Id")

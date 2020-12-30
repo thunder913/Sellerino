@@ -5,6 +5,10 @@ import java.util.List;
 
 public class LaptopDto {
 
+    public LaptopDto(){
+
+    }
+
     private long id;
 
     private String manufacturer;
