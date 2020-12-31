@@ -13,7 +13,7 @@ public class LaptopDto {
 
     private String manufacturer;
 
-    private float price;
+    private String price;
 
     private String model;
 
@@ -93,11 +93,11 @@ public class LaptopDto {
         this.manufacturer = manufacturer;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

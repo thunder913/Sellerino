@@ -18,9 +18,9 @@ public class SaleDto {
 
     private int quantity;
 
-    private BigDecimal totalPrice;
+    private String totalPrice;
 
-    private BigDecimal priceForOne;
+    private String priceForOne;
 
     private long buyerId;
 
@@ -48,19 +48,19 @@ public class SaleDto {
         this.quantity = quantity;
     }
 
-    public BigDecimal getTotalPrice() {
+    public String getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
+    public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
     }
 
-    public BigDecimal getPriceForOne() {
+    public String getPriceForOne() {
         return priceForOne;
     }
 
-    public void setPriceForOne(BigDecimal priceForOne) {
+    public void setPriceForOne(String priceForOne) {
         this.priceForOne = priceForOne;
     }
 

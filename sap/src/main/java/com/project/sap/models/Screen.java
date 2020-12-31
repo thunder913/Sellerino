@@ -23,7 +23,7 @@ public class Screen {
     private int refreshRate;
 
     @Column(name="[Response Time]", nullable = false)
-    private double responseTime;
+    private float responseTime;
 
     public long getId() {
         return id;
@@ -57,11 +57,11 @@ public class Screen {
         this.refreshRate = refreshRate;
     }
 
-    public double getResponseTime() {
+    public float getResponseTime() {
         return responseTime;
     }
 
-    public void setResponseTime(double responseTime) {
+    public void setResponseTime(float responseTime) {
         this.responseTime = responseTime;
     }
 }

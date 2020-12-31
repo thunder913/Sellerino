@@ -13,8 +13,8 @@
     <script src="../static/js/select2.min.js"
             th:src="@{/js/select2.min.js}"></script>
     <div id="formContent">
+        <h3 th:if="${error != null}" th:text="${error}"/>
         <h2 class="active"> Add Product </h2>
-
         <form th:object="${laptop}" th:action="@{/add-product}" method="post">
             <input type="text" th:field="*{manufacturer}" id="manufacturer" class="fadeIn second" name="manufacturer" placeholder="Manufacturer" required>
             <input type="text" th:field="*{model}" id="model" class="fadeIn second" name="model" placeholder="Model" required>

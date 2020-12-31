@@ -26,8 +26,7 @@ public class RegisterController {
         this.userService = userService;
     }
 
-    //TODO make the model take the errorMessage variable, without the need of a private String errorMessage
-    //and give the GET /register the values for email and names, so not to write em again
+    //TODO and give the GET /register the values for email and names, so not to write em again
     @GetMapping("/register")
     public String register(WebRequest request, Model model) {
         UserDto userDto = new UserDto();
