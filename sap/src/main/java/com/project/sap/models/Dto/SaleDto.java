@@ -16,7 +16,7 @@ public class SaleDto {
 
     private long laptopId;
 
-    private int quantity;
+    private String quantity;
 
     private String totalPrice;
 
@@ -40,11 +40,11 @@ public class SaleDto {
         this.date = date;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 

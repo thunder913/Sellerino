@@ -4,11 +4,13 @@
     <link rel="stylesheet" type="text/css"
           href="../static/css/form.css" th:href="@{/css/form.css}"/>
     <div id="formContent">
+        <h3 th:if="${param.error}">Invalid email or password!</h3>
         <!-- Tabs Titles -->
         <h2 class="active"> Sign In </h2>
         <h2 href="/register" class="inactive underlineHover">
             <a href="/register">Sign Up</a>
         </h2>
+
         <!-- Login Form -->
         <form th:action="@{/login}" method="post">
             <input type="text" id="login" class="fadeIn second" name="email" placeholder="Email" required>
@@ -17,7 +19,7 @@
         </form>
         <!-- Remind Passowrd -->
         <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
+            If you have forgotten your password write to an admin.
         </div>
     </div>
 </div>

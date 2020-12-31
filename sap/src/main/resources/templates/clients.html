@@ -8,7 +8,7 @@
               href="../static/css/table.css" th:href="@{/css/table.css}"/>
 
         <body>
-
+        <h3 th:if="${error != null}" th:text="${error}"/>
         <table id="table">
             <tr>
                 <th>Id</th>

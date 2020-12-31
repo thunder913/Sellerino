@@ -7,7 +7,7 @@
               href="../static/css/products.css" th:href="@{/css/products.css}"/>
 
         <body>
-
+        <h3 th:if="${error != null}" th:text="${error}"/>
         <table id="customers">
             <tr>
                 <th>Image</th>

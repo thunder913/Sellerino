@@ -13,6 +13,7 @@
     <script src="../static/js/select2.min.js"
             th:src="@{/js/select2.min.js}"></script>
     <div id="formContent">
+        <h3 th:if="${error != null}" th:text="${error}"/>
         <h2 class="active"> Edit Product </h2>
 
         <form th:object="${product}" th:action="@{/edit/products/{productId}(productId=${product.id})}" method="post">

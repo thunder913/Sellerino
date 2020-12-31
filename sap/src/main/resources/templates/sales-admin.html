@@ -67,6 +67,7 @@
                 <th>Price per unit</th>
                 <th>Total price</th>
                 <th>Buyer</th>
+                <th>Seller</th>
                 <th>Actions</th>
             </tr>
             <tr th:each="sale : ${sales}">
@@ -77,6 +78,7 @@
                 <td th:text="${sale.laptop.price}"></td>
                 <td th:text="${sale.totalPrice}"></td>
                 <td th:text="${sale.buyer.firstName} + ' ' + ${sale.buyer.lastName}"></td>
+                <td th:text="${sale.seller.firstName} + ' ' + ${sale.seller.lastName}"></td>
                 <td>
                     <a th:href="@{/edit/sales/{saleId}(saleId=${sale.id})}">Edit</a>
                     <a th:href="@{/delete/sales/{saleId}(saleId=${sale.id})}">Delete</a>
