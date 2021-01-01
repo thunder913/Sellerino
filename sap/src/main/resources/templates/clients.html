@@ -10,6 +10,7 @@
         <body>
         <h3 th:if="${error != null}" th:text="${error}"/>
         <table id="table">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Full name</th>
@@ -18,6 +19,8 @@
                 <th>Phone</th>
                 <th>Actions</th>
             </tr>
+            </thead>
+            <tbody>
             <tr th:each="client : ${clients}">
                 <td th:text="${client.id}"></td>
                 <td th:text="${client.firstName} + ' ' + ${client.lastName}"></td>
@@ -29,11 +32,17 @@
                     <a th:href="@{/delete/clients/{userId}(userId=${client.id})}">Delete</a>
                 </td>
             </tr>
-
+            </tbody>
 
         </table>
-
+        <div class="col-md-12 text-center">
+            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+        </div>
         </body>
     </div>
 </div>
+
+<script>
+        $('tbody').pageMe({pagerSelector:'#myPager',showPrevNext:false,hidePageNumbers:false,perPage:15});
+</script>
 

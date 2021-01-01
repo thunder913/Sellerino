@@ -4,11 +4,12 @@
         <div th:replace="header :: myHeader"></div>
 
         <link rel="stylesheet" type="text/css"
-              href="../static/css/products.css" th:href="@{/css/products.css}"/>
+              href="../static/css/table.css" th:href="@{/css/table.css}"/>
 
         <body>
         <h3 th:if="${error != null}" th:text="${error}"/>
-        <table id="customers">
+        <table id="table">
+            <thead>
             <tr>
                 <th>Image</th>
                 <th>Id</th>
@@ -19,7 +20,10 @@
                 <th>Screen</th>
                 <th>Storage</th>
                 <th>Price</th>
+                <th>Actions</th>
             </tr>
+            </thead>
+            <tbody>
             <tr th:each="product : ${products}">
                 <td><img th:if="${!product.images.empty}" th:src="@{${product.images[0].url}}"></td>
                 <td th:text="${product.id}"></td>
@@ -38,11 +42,17 @@
                     <a th:href="@{/delete/products/{productId}(productId=${product.id})}">Delete</a>
                 </td>
             </tr>
-
+            </tbody>
 
         </table>
-
+        <div class="col-md-12 text-center">
+            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+        </div>
         </body>
     </div>
 </div>
+
+<script>
+        $('tbody').pageMe({pagerSelector:'#myPager',showPrevNext:false,hidePageNumbers:false,perPage:15});
+</script>
 

@@ -6,12 +6,6 @@
         <link rel="stylesheet" type="text/css"
               href="../static/css/table.css" th:href="@{/css/table.css}"/>
 
-        <link rel="stylesheet" type="text/css"
-              href="../static/css/sales-admin.css" th:href="@{/css/sales-admin.css}"/>
-
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-            th:src="@{https://cdn.jsdelivr.net/jquery/latest/jquery.min.js}"></script>
-
         <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
                 th:src="@{https://cdn.jsdelivr.net/momentjs/latest/moment.min.js}"></script>
 
@@ -42,6 +36,7 @@
         </form>
 
         <table th:if="${stats != null}" class="table">
+            <thead>
             <tr>
                 <th>Total sales</th>
                 <th>Average cost per sale</th>
@@ -56,9 +51,11 @@
                 <td th:text="${stats.biggestSale.totalPrice} + ' BGN made by ' + ${stats.biggestSale.seller.email}"></td>
                 <td th:text="${stats.worstSale.totalPrice} + ' BGN made by ' + ${stats.worstSale.seller.email}"></td>
             </tr>
+            </thead>
         </table>
 
         <table id="table">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Date</th>
@@ -70,6 +67,8 @@
                 <th>Seller</th>
                 <th>Actions</th>
             </tr>
+            </thead>
+            <tbody>
             <tr th:each="sale : ${sales}">
                 <td th:text="${sale.id}"></td>
                 <td th:text="${#dates.format(sale.date, 'dd-MM-yyyy HH:mm')} + ' GMT'"></td>
@@ -84,7 +83,11 @@
                     <a th:href="@{/delete/sales/{saleId}(saleId=${sale.id})}">Delete</a>
                 </td>
             </tr>
+            </tbody>
         </table>
+        <div class="col-md-12 text-center">
+            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+        </div>
         </body>
     </div>
 </div>
@@ -106,5 +109,9 @@ $(function() {
   $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
       $(this).val('');
   });
+
+
 });
+  $('tbody').pageMe({pagerSelector:'#myPager',showPrevNext:false,hidePageNumbers:false,perPage:15});
+
 </script>

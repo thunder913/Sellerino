@@ -10,6 +10,7 @@
         <body>
 
         <table id="table">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Date</th>
@@ -20,6 +21,8 @@
                 <th>Buyer</th>
                 <th>Actions</th>
             </tr>
+            </thead>
+            <tbody>
             <tr th:each="sale : ${sales}">
                 <td th:text="${sale.id}"></td>
                 <td th:text="${#dates.format(sale.date, 'dd-MM-yyyy HH:mm')} + ' GMT'"></td>
@@ -33,11 +36,16 @@
                     <a th:href="@{/delete/sales/{saleId}(saleId=${sale.id})}">Delete</a>
                 </td>
             </tr>
-
-
+            </tbody>
+            <div class="col-md-12 text-center">
+                <ul class="pagination pagination-lg pager" id="myPager"></ul>
+            </div>
         </table>
 
         </body>
     </div>
 </div>
 
+<script>
+   $('tbody').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:15});
+</script>

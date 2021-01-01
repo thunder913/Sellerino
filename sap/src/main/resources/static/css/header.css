@@ -5,20 +5,31 @@
 * ==========================================
 *
 */
+
 .navbar {
     transition: all 0.4s;
+    background-image: url("../img/header-background.jpg");
+    background-repeat: no-repeat;
+}
+
+.nav-link{
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: rgb(117 88 48 / 31%);
+    border: 2px solid #755830;
+    border-radius: 10px;
 }
 
 .navbar .nav-link {
     color: #fff;
-    border: 2px solid transparent;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus {
     color: #fff;
     text-decoration: none;
-    border: 2px solid #7e899c;
+    border: 2px solid black;
+    background-color:rgb(73 52 22/ 80%);
 
 }
 
