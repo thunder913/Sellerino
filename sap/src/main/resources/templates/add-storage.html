@@ -5,7 +5,7 @@
           href="../static/css/form.css" th:href="@{/css/form.css}"/>
     <div id="formContent">
         <!-- Tabs Titles -->
-        <h3 th:if="${error != null}" th:text="${error}"/>
+        <h3 class="error" th:if="${error != null}" th:text="${error}"/>
         <h2 class="active"> Add storage </h2>
         <form th:object="${storage}" th:action="@{/add-storage}" method="post">
             <input type="text" th:field="*{capacity}" id="capacity" class="fadeIn second" name="capacity" placeholder="Capacity" required>

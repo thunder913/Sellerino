@@ -5,7 +5,7 @@
           href="../static/css/form.css" th:href="@{/css/form.css}"/>
     <div id="formContent">
         <!-- Tabs Titles -->
-        <h3 th:if="${error != null}" th:text="${error}"/>
+        <h3 class="error" th:if="${error != null}" th:text="${error}"/>
         <h2 class="active"> Add processor </h2>
         <form th:object="${processor}" th:action="@{/add-processor}" method="post">
             <input type="text" th:field="*{manufacturer}" id="manufacturer" class="fadeIn second" name="manufacturer" placeholder="Manufacturer" required>

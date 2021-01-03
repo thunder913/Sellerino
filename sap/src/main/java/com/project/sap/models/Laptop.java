@@ -59,6 +59,12 @@ public class Laptop {
             inverseJoinColumns={@JoinColumn(name="storage_id")})
     private Set<Storage> storage = new HashSet<Storage>();
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="laptop_sales",
+            joinColumns = { @JoinColumn(name="laptop_id")},
+            inverseJoinColumns={@JoinColumn(name="sales_id")})
+    private Set<Sale> sales;
+
     public long getId() {
         return id;
     }
@@ -138,5 +144,13 @@ public class Laptop {
 
     public void setStorage(Set<Storage> storage) {
         this.storage = storage;
+    }
+
+    public Set<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(Set<Sale> sales) {
+        this.sales = sales;
     }
 }

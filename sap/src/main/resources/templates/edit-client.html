@@ -8,7 +8,7 @@
             Edit client
         </h2>
         <!-- Login Form -->
-        <h3 th:if="${error != null}" th:text="${error}"/>
+        <h3 class="error" th:if="${error != null}" th:text="${error}"/>
         <form th:object="${client}" method="POST" th:action="@{/edit/client/{clientId}(clientId=${client.id})}">
             <input type="text" id="email" th:field="*{email}" class="fadeIn second" name="email" placeholder="Email" th:required="required">
             <input type="text" id="firstName" th:field="*{firstName}" class="fadeIn second" name="firstName" placeholder="First Name" th:required="required">

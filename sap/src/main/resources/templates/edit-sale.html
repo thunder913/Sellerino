@@ -14,7 +14,7 @@
     <script src="../static/js/select2.min.js"
             th:src="@{/js/select2.min.js}"></script>
     <div id="formContent">
-        <h3 th:if="${error != null}" th:text="${error}"/>
+        <h3 class="error" th:if="${error != null}" th:text="${error}"/>
         <h2 class="active"> Edit Sale </h2>
         <form th:object="${sale}" th:action="@{/edit/sales/{saleId}(saleId=${sale.id})}" method="post">
             <label class="fadeIn third" >Laptop: </label>

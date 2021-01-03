@@ -4,8 +4,7 @@
     <link rel="stylesheet" type="text/css"
           href="../static/css/form.css" th:href="@{/css/form.css}"/>
     <div id="formContent">
-        <h3 th:if="${param.error}">Invalid email or password!</h3>
-        <!-- Tabs Titles -->
+        <h3 class="error" th:if="${param.error}">Invalid email or password!</h3>
         <h2 class="active"> Sign In </h2>
         <h2 href="/register" class="inactive underlineHover">
             <a href="/register">Sign Up</a>
@@ -17,7 +16,6 @@
             <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required>
             <input type="submit" class="fadeIn fourth" value="Login">
         </form>
-        <!-- Remind Passowrd -->
         <div id="formFooter">
             If you have forgotten your password write to an admin.
         </div>
