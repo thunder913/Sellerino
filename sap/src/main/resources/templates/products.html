@@ -37,7 +37,7 @@
                 <td >
                     <span th:each="storage: ${product.storage}" th:text="${storage.name}"></span>
                 </td>
-                <td th:text="${product.price}"></td>
+                <td th:text="${#numbers.formatDecimal({product.price}, 1, 2)}"></td>
                 <td><a th:href="@{/edit/products/{productId}(productId=${product.id})}">Edit</a>
                     <a th:href="@{/delete/products/{productId}(productId=${product.id})}">Delete</a>
                 </td>

@@ -58,13 +58,13 @@ h2 {
   text-align: center;
   margin-top: 35px;
   background: rgb(138,82,9);
-  background: radial-gradient(circle, rgba(138,82,9,1) 18%, rgba(154,94,14,1) 32%, rgba(164,98,11,1) 45%, rgba(179,119,29,1) 100%);
+  background: radial-gradient(circle, rgba(138,82,9,0.9) 18%, rgba(154,94,14,0.9) 32%, rgba(164,98,11,0.9) 45%, rgba(179,119,29,0.9) 100%);
   border: 5px solid #a6a08f;
 }
 
 #formFooter {
 background: rgb(176,111,28);
-background: radial-gradient(circle, rgba(176,111,28,1) 21%, rgba(212,142,38,1) 100%); border-top: 1px solid #dce8f1;
+background: radial-gradient(circle, rgba(176,111,28,0.9) 21%, rgba(212,142,38,0.9) 100%); border-top: 1px solid #dce8f1;
   padding: 25px;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;

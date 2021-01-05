@@ -62,6 +62,7 @@ public class ProductsEditController {
         laptop.setId(laptopDto.getId());
         for (Sale sale: salesService.getAll().stream().filter(x->x.getLaptop().getId()==laptop.getId()).collect(Collectors.toList())) {
             sale.setTotalPrice(BigDecimal.valueOf(laptop.getPrice()*sale.getQuantity()));
+            salesService.save(sale);
         }
         laptopService.add(laptop);
         return "redirect:/products";

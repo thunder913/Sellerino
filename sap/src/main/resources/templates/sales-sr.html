@@ -28,8 +28,8 @@
                 <td th:text="${#dates.format(sale.date, 'dd-MM-yyyy HH:mm')} + ' GMT'"></td>
                 <td th:text="${sale.laptop.manufacturer} + ' ' + ${sale.laptop.model}"></td>
                 <td th:text="${sale.quantity}"></td>
-                <td th:text="${sale.laptop.price}"></td>
-                <td th:text="${sale.totalPrice}"></td>
+                <td th:text="${#numbers.formatDecimal({sale.laptop.price}, 1, 2)}"></td>
+                <td th:text="${#numbers.formatDecimal({sale.totalPrice}, 1, 2)}"></td>
                 <td th:text="${sale.buyer.firstName} + ' ' + ${sale.buyer.lastName}"></td>
                 <td>
                     <a th:href="@{/edit/sales/{saleId}(saleId=${sale.id})}">Edit</a>

@@ -30,17 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/home").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/add-product").authenticated()
-                .antMatchers("/add-ram").authenticated()
-                .antMatchers("/add-processor").authenticated()
-                .antMatchers("/add-ram").authenticated()
-                .antMatchers("/add-video-card").authenticated()
-                .antMatchers("/add-screen").authenticated()
-                .antMatchers("/products").authenticated()
-                .antMatchers("/users").authenticated()
+                .antMatchers("/home", "/", "/login", "/register", "/about").permitAll()
+                .antMatchers("/add-product", "/users", "/products",
+                        "/sales-admin", "/sales-sr", "/add-sale", "/client", "/edit/**",
+                        "/add-ram", "/add-processor", "/add-screen", "/add-video-card", "/add-storage").authenticated()
                 .and()
                 .formLogin().permitAll()
                     .loginPage("/login")

@@ -28,7 +28,6 @@ public class ClientsAddController {
         return mav;
     }
 
-    //TODO make the data save, and only the email dissapear
     @PostMapping("/add-client")
     public String addClient(Client client){
         try {

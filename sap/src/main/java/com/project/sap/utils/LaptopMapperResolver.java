@@ -17,6 +17,7 @@ import java.util.Set;
 public class LaptopMapperResolver{
 
     private static final String addProductURLRedirect = "redirect:/add-product";
+    private LaptopService laptopService;
     private RAMService ramService;
     private VideoCardService videoCardService;
     private ScreenService screenService;
@@ -24,12 +25,13 @@ public class LaptopMapperResolver{
     private ProcessorService processorService;
 
     @Autowired
-    public LaptopMapperResolver(RAMService ramService, VideoCardService videoCardService, ScreenService screenService, StorageService storageService, ProcessorService processorService) {
+    public LaptopMapperResolver(RAMService ramService, VideoCardService videoCardService, ScreenService screenService, StorageService storageService, ProcessorService processorService, LaptopService laptopService) {
         this.ramService = ramService;
         this.videoCardService = videoCardService;
         this.screenService = screenService;
         this.storageService = storageService;
         this.processorService = processorService;
+        this.laptopService = laptopService;
     }
 
     public Laptop laptopDtoToLaptop(LaptopDto laptopDto) {
@@ -65,6 +67,7 @@ public class LaptopMapperResolver{
         laptop.setRam(rams);
         laptop.setStorage(storageList);
         laptop.setImages(images);
+        laptop.setSales(laptopService.findById(laptopDto.getId()).get().getSales());
         return laptop;
     }
 

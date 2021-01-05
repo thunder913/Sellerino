@@ -26,7 +26,6 @@ public class RegisterController {
         this.userService = userService;
     }
 
-    //TODO and give the GET /register the values for email and names, so not to write em again
     @GetMapping("/register")
     public String register(WebRequest request, Model model) {
         UserDto userDto = new UserDto();

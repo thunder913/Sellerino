@@ -39,7 +39,6 @@ public class ProductsAddController {
         return mav;
     }
 
-    //TODO make select2 not allow user input
     @PostMapping("/add-product")
     public ModelAndView saveProduct(LaptopDto laptopDto, Model model){
         InputValidation.lenghtCheck("Manufacturer",laptopDto.getManufacturer(), model);

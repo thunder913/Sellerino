@@ -17,10 +17,21 @@
 
         <link rel="stylesheet" href="./static/css/select2.min.css"
               th:href="@{/css/select2.min.css}">
+
+
+        <link rel="stylesheet" type="text/css"
+              href="../static/css/p-format.css" th:href="@{/css/p-format.css}"/>
+
+        <style>
+            p{
+                margin: 0;
+                padding: 5px;
+            }
+        </style>
         <body>
 
         <form method="get" th:action="@{/sales-admin}">
-            <p>Search by date: </p>
+            <p>Analyze the sales by: </p>
             <input readonly class="datepicker" type="text" name="datefilter" value="" placeholder="Period" />
 
             <select id="client" name="client" th:required="required" class="fadeIn third" >
@@ -32,7 +43,7 @@
                 <option value="0">Select seller</option>
                 <option th:each="seller: ${sellers}" th:text="${seller.firstName} + ' ' + ${seller.lastName}" th:attr="value = ${seller.id}"></option>
             </select>
-            <button type="submit" value="Submit">Submit</button>
+            <button type="submit" value="Submit">Select</button>
         </form>
 
         <table th:if="${stats != null}" class="table">
@@ -74,8 +85,8 @@
                 <td th:text="${#dates.format(sale.date, 'dd-MM-yyyy HH:mm')} + ' GMT'"></td>
                 <td th:text="${sale.laptop.manufacturer} + ' ' + ${sale.laptop.model}"></td>
                 <td th:text="${sale.quantity}"></td>
-                <td th:text="${sale.laptop.price}"></td>
-                <td th:text="${sale.totalPrice}"></td>
+                <td th:text="${#numbers.formatDecimal({sale.laptop.price}, 1, 2)}"></td>
+                <td th:text="${#numbers.formatDecimal({sale.totalPrice}, 1, 2)}"></td>
                 <td th:text="${sale.buyer.firstName} + ' ' + ${sale.buyer.lastName}"></td>
                 <td th:text="${sale.seller.firstName} + ' ' + ${sale.seller.lastName}"></td>
                 <td>
