@@ -67,7 +67,6 @@ public class LaptopMapperResolver{
         laptop.setRam(rams);
         laptop.setStorage(storageList);
         laptop.setImages(images);
-        laptop.setSales(laptopService.findById(laptopDto.getId()).get().getSales());
         return laptop;
     }
 
