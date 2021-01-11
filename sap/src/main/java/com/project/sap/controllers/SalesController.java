@@ -2,6 +2,7 @@ package com.project.sap.controllers;
 
 import com.project.sap.models.Dto.DateDto;
 import com.project.sap.models.Dto.SaleDto;
+import com.project.sap.models.Laptop;
 import com.project.sap.models.Sale;
 import com.project.sap.models.Statistic;
 import com.project.sap.models.User;
@@ -67,16 +68,18 @@ public class SalesController {
 
     @PostMapping("/add-sale")
     public ModelAndView addSale(SaleDto saleDto, Model model){
-        if (saleDto.getTotalPrice() == null || saleDto.getPriceForOne() == null || Integer.parseInt(saleDto.getQuantity())==0){
+        if (saleDto.getTotalPrice() == null || saleDto.getPriceForOne() == null || Integer.parseInt(saleDto.getQuantity())==0 || Double.parseDouble(saleDto.getTotalPrice())<=0.01){
             model.addAttribute("error", "The prices and quantities cannot be empty or zero!");
             return this.addSale(model);
         }
         saleDto.setDate(Date.from((LocalDateTime.now()).toInstant(ZoneOffset.UTC)));
         Sale sale = salesMapperResolver.saleDtoToSale(saleDto);
+       //Laptop laptop = laptopService.findById(saleDto.getLaptopId()).get();
+       //laptop.addSale(sale);
         User seller = this.getUser();
         sale.setSeller(seller);
         salesService.save(sale);
-        return new ModelAndView("/home");
+        return new ModelAndView("redirect:/home");
     }
 
     @GetMapping("/sales-admin")

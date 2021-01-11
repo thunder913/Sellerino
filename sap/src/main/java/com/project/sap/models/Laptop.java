@@ -153,4 +153,8 @@ public class Laptop {
     public void setSales(Set<Sale> sales) {
         this.sales = sales;
     }
+
+    public void addSale(Sale sale){
+        this.sales.add(sale);
+    }
 }

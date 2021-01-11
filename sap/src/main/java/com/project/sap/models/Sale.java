@@ -19,7 +19,10 @@ public class Sale {
     @Column(name="date", nullable = false)
     private Date date;
 
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name="laptop_sales",
+            joinColumns = { @JoinColumn(name="sales_id")},
+            inverseJoinColumns={@JoinColumn(name="laptop_id")})
     private Laptop laptop;
 
     @Column(name="quantity", nullable = false)
