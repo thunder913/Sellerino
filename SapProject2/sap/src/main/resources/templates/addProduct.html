@@ -1,0 +1,92 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="header :: myHeader"></div>
+<div class="wrapper fadeInDown">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/form.css" th:href="@{/css/form.css}"/>
+
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/addproduct.css" th:href="@{/css/addproduct.css}"/>
+
+    <link rel="stylesheet" href="./static/css/select2.min.css"
+                            th:href="@{/css/select2.min.css}">
+
+    <script src="../static/js/select2.min.js"
+            th:src="@{/js/select2.min.js}"></script>
+    <div id="formContent">
+        <h3 class="error" th:if="${error != null}" th:text="${error}"/>
+        <h2 class="active"> Add Product </h2>
+        <form th:object="${laptop}" th:action="@{/add-product}" method="post">
+            <input type="text" th:field="*{manufacturer}" id="manufacturer" class="fadeIn second" name="manufacturer" placeholder="Manufacturer" required>
+            <input type="text" th:field="*{model}" id="model" class="fadeIn second" name="model" placeholder="Model" required>
+            <input type="text" th:field="*{price}" id="price" class="fadeIn third" name="price" placeholder="Price" required>
+            <br>
+            <label class="fadeIn third" >Images: </label>
+            <select id="images" th:field="*{imageUrls}" multiple="multiple" th:required="required" class="fadeIn fourth mul-selectImg"></select>
+            <br>
+            <label class="fadeIn third" >RAM: </label>
+            <select id="rams" th:field="*{ramIds}" multiple th:required="required" class="fadeIn third mul-selectRAM" >
+                <option class="fadeIn third" type="checkbox" th:each="ram: ${ramsList}" th:text="${ram.name}" th:attr="value = ${ram.id}"></option>
+            </select>
+            <a href="/add-ram" class="add fadeIn third">Add RAM</a>
+            <br>
+            <label class="fadeIn third" >Processor: </label>
+            <select id="processors" th:field="*{processorId}"  th:required="required" class="fadeIn third" >
+                <option th:each="processor: ${processorList}" th:text="${processor.name}" th:attr="value = ${processor.id}"></option>
+            </select>
+            <a href="/add-processor" class="add fadeIn third">Add Processor</a>
+            <br>
+            <label class="fadeIn third" >Screen: </label>
+            <select th:field="*{screenId}"  th:required="required" class="fadeIn third" >
+                <option th:each="screen: ${screenList}" th:text="${screen.name}" th:attr="value = ${screen.id}"></option>
+            </select>
+            <a href="/add-screen" class="add fadeIn third">Add Screen</a>
+            <br>
+            <label class="fadeIn third" >Storage: </label>
+            <select th:field="*{storageIds}" multiple th:required="required" class="fadeIn third mul-selectStorage" >
+                <option th:each="storage: ${storageList}" th:text="${storage.name}" th:attr="value = ${storage.id}"></option>
+            </select>
+            <a href="/add-storage" class="add fadeIn third">Add Storage</a>
+            <br>
+            <label class="fadeIn third" >Video Card: </label>
+            <select th:field="*{videoCardId}"  th:required="required" class="fadeIn third" >
+                <option th:each="videoCard: ${videoCardList}" th:text="${videoCard.name}" th:attr="value = ${videoCard.id}"></option>
+            </select>
+            <a href="/add-video-card" class="add fadeIn third">Add Video Card</a>
+            <br>
+            <input type="submit" class="fadeIn fourth" value="Add">
+
+        </form>
+        <div id="formFooter">
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+            $(".mul-selectRAM").select2({
+                    placeholder: "RAM", //placeholder
+                    tags: true,
+                    tokenSeparators: ['/',',',';'," "]
+                });
+            })
+$(document).ready(function(){
+            $(".mul-selectStorage").select2({
+                    placeholder: "Storage", //placeholder
+                    tags: true,
+                    tokenSeparators: ['/',',',';'," "]
+                });
+            })
+            $(document).ready(function(){
+            $(".mul-selectImg").select2({
+                    placeholder: "Images", //placeholder
+                    tags: true,
+                    tokenSeparators: [" "]
+                });
+            })
+
+
+    document.querySelector("#price").value = "";
+    document.querySelector("#quantity").value = "";
+
+
+</script>
+</html>

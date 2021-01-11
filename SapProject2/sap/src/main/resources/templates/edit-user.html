@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="header :: myHeader"></div>
+<div class="wrapper fadeInDown">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/form.css" th:href="@{/css/form.css}"/>
+    <div id="formContent">
+        <h2 href="/register" class="active">
+            Edit user
+        </h2>
+        <!-- Login Form -->
+        <h3 class="error" th:if="${error != null}" th:text="${error}"/>
+        <form th:object="${user}" method="POST" th:action="@{/edit/users/{userId}(userId=${user.id})}">
+            <input type="text" id="email" th:field="*{email}" class="fadeIn second" name="register" placeholder="Email" th:required="required">
+            <input type="text" id="firstName" th:field="*{firstName}" class="fadeIn second" name="register" placeholder="First Name" th:required="required">
+            <input type="text" id="lastName" th:field="*{lastName}" class="fadeIn second" name="register" placeholder="Last Name" th:required="required">
+            <select th:field="*{role}" th:required="required">
+                <option value="Invalid">Select role:</option>
+                <option value="Admin">Admin</option>
+                <option value="SR">Sales Representative</option>
+            </select>
+            <br>
+            <label> Activated account: </label>
+            <select th:field="*{enabled}" th:required="required">
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+            <br>
+            <input type="submit" class="fadeIn fourth" value="Edit">
+        </form>
+
+        <div id="formFooter">
+            <p class="fadeIn third"> Edit any field you'd like!</p>
+        </div>
+    </div>
+</div>
+</html>

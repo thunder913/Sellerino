@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="header :: myHeader"></div>
+<div class="wrapper fadeInDown">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/form.css" th:href="@{/css/form.css}"/>
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <h3 class="error" th:if="${error != null}" th:text="${error}"/>
+        <h2 class="active"> Add processor </h2>
+        <form th:object="${processor}" th:action="@{/add-processor}" method="post">
+            <input type="text" th:field="*{manufacturer}" id="manufacturer" class="fadeIn second" name="manufacturer" placeholder="Manufacturer" required>
+            <input type="text" th:field="*{model}" id="model" class="fadeIn second" name="model" placeholder="Model" required>
+            <input type="text" th:field="*{cores}" id="cores" class="fadeIn second" name="cores" placeholder="Cores" required>
+            <input type="text" th:field="*{speed}" id="speed" class="fadeIn second" name="speed" placeholder="Speed" required>
+            <input type="submit" class="fadeIn fourth" value="Add">
+        </form>
+        <div id="formFooter"></div>
+    </div>
+</div>
+<script>
+    document.querySelector("#cores").value = "";
+    document.querySelector("#speed").value = "";
+</script>
+</html>

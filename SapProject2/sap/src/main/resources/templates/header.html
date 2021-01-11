@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<header th:fragment="myHeader" class="py-3 mt-3">
+
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/header.css" th:href="@{/css/header.css}"/>
+
+    <link href="../static/js/bootstrap/css/bootstrap.min.css"
+          th:href="@{/js/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
+
+    <script src="../static/js/bootstrap/js/bootstrap.bundle.min.js"
+            th:src="@{/js/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+
+    <script src="../static/js/pageMe.js"
+            th:src="@{/js/pageMe.js}"></script>
+
+    <link href="/static/css/font-awesome.min.css"
+          th:href="@{/css/font-awesome.min.css}"/>
+
+    <script type="text/javascript" src="../static/js/jquery.simplePagination.js"
+            th:src="@{/js/jquery.simplePagination.js}"></script>
+
+    <link href="/static/css/simplePagination.css"
+          th:href="@{/css/simplePagination.css}"/>
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a href="/home" class="nav-link text-uppercase font-weight-bold">Home <span class="sr-only">(current)</span></a></li>
+                    <li sec:authorize="!isAuthenticated()" class="nav-item"><a href="/login" class="nav-link text-uppercase font-weight-bold">Login</a></li>
+                    <li sec:authorize="isAuthenticated()" th:if="${#strings.equals(#authentication.getPrincipal().authorities[0], 'Admin')}" class="nav-item"><a href="/add-product" class="nav-link text-uppercase font-weight-bold">Add product</a></li>
+                    <li sec:authorize="isAuthenticated()" th:if="${#strings.equals(#authentication.getPrincipal().authorities[0], 'Admin')}" class="nav-item"><a href="/users" class="nav-link text-uppercase font-weight-bold">Users</a></li>
+                    <li sec:authorize="isAuthenticated()" th:if="${#strings.equals(#authentication.getPrincipal().authorities[0], 'Admin')}" class="nav-item"><a href="/products" class="nav-link text-uppercase font-weight-bold">Products</a></li>
+                    <li sec:authorize="isAuthenticated()" th:if="${#strings.equals(#authentication.getPrincipal().authorities[0], 'Admin')}" class="nav-item"><a href="/sales-admin" class="nav-link text-uppercase font-weight-bold">Sales</a></li>
+                    <li sec:authorize="isAuthenticated()" th:if="${#strings.equals(#authentication.getPrincipal().authorities[0], 'SR')}" class="nav-item"><a href="/add-sale" class="nav-link text-uppercase font-weight-bold">Add sale</a></li>
+                    <li sec:authorize="isAuthenticated()" th:if="${#strings.equals(#authentication.getPrincipal().authorities[0], 'SR')}" class="nav-item"><a href="/clients" class="nav-link text-uppercase font-weight-bold">Clients</a></li>
+                    <li sec:authorize="isAuthenticated()" th:if="${#strings.equals(#authentication.getPrincipal().authorities[0], 'SR')}" class="nav-item"><a href="/sales-sr" class="nav-link text-uppercase font-weight-bold">Sales</a></li>
+                        <li sec:authorize="!isAuthenticated()" class="nav-item"><a href="/register" class="nav-link text-uppercase font-weight-bold">Register</a></li>
+                        <li class="nav-item"><a href="/about" class="nav-link text-uppercase font-weight-bold">About us</a></li>
+                        <form sec:authorize="isAuthenticated()" id="logoutForm" th:action="@{/logout}" method="POST">
+                            <li class="nav-item" onclick="logoutForm.submit();"><a class="nav-link text-uppercase font-weight-bold">Logout</a></li>
+                        </form>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-100px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+
+</script>
+</header>
+
+</html>

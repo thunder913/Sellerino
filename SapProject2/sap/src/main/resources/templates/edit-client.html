@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="header :: myHeader"></div>
+<div class="wrapper fadeInDown">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/form.css" th:href="@{/css/form.css}"/>
+    <div id="formContent">
+        <h2 href="/register" class="active">
+            Edit client
+        </h2>
+        <!-- Login Form -->
+        <h3 class="error" th:if="${error != null}" th:text="${error}"/>
+        <form th:object="${client}" method="POST" th:action="@{/edit/client/{clientId}(clientId=${client.id})}">
+            <input type="text" id="email" th:field="*{email}" class="fadeIn second" name="email" placeholder="Email" th:required="required">
+            <input type="text" id="firstName" th:field="*{firstName}" class="fadeIn second" name="firstName" placeholder="First Name" th:required="required">
+            <input type="text" id="lastName" th:field="*{lastName}" class="fadeIn second" name="lastName" placeholder="Last Name" th:required="required">
+            <input type="text" id="phone" th:field="*{phone}" class="fadeIn second" name="phone" placeholder="Phone" th:required="required">
+            <input type="text" id="address" th:field="*{address}" class="fadeIn second" name="address" placeholder="Address" th:required="required">
+            <input type="text" id="city" th:field="*{city}" class="fadeIn second" name="city" placeholder="City" th:required="required">
+            <input type="text" id="country" th:field="*{country}" class="fadeIn second" name="country" placeholder="City" th:required="required">
+            <br>
+            <input type="submit" class="fadeIn fourth" value="Edit">
+        </form>
+
+        <div id="formFooter">
+            <p class="fadeIn third"> Edit any field you'd like!</p>
+        </div>
+    </div>
+</div>
+</html>
